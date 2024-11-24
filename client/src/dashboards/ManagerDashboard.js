@@ -40,12 +40,52 @@ function ManagerDashboard({ name }) {
         });
     };
     const handleClickAddMenuItem = (e) => {
-        // make a request to the server to add the menu item
-        setAddMenuResult(`Adding item ${addMenuItem} for ${addMenuCategory} menu`);
+        // make a request to the server to add the menu item 
+        fetch(SERVER_URL + `/menu/add/${addMenuCategory}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ 
+                category: addMenuCategory,
+                item: addMenuItem 
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) throw new Error(data.error);
+            else {
+                // display the menu items
+                setViewMenuResult(`Item ${addMenuItem} has bee added to ${addMenuCategory} menu`);
+            }
+        })
+        .catch(error => {
+            setViewMenuResult(error.message);
+        });
     };
     const handleClickRemoveMenuItem = (e) => {
         // make a request to the server to remove the menu item
-        setRemoveMenuResult(`Removing item ${removeMenuItem} from ${removeMenuCategory} menu`);
+        fetch(SERVER_URL + `/menu/remove/${removeMenuCategory}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ 
+                category: removeMenuCategory,
+                item: removeMenuItem 
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) throw new Error(data.error);
+            else {
+                // display the menu items
+                setViewMenuResult(`Item ${removeMenuItem} has bee added to ${removeMenuCategory} menu`);
+            }
+        })
+        .catch(error => {
+            setViewMenuResult(error.message);
+        });
     };
     return (
         <div>
