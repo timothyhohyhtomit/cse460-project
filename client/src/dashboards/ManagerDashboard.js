@@ -56,11 +56,11 @@ function ManagerDashboard({ name }) {
             if (data.error) throw new Error(data.error);
             else {
                 // display the menu items
-                setViewMenuResult(`Item ${addMenuItem} has bee added to ${addMenuCategory} menu`);
+                setAddMenuResult(`Item ${addMenuItem} has been added to ${addMenuCategory} menu`);
             }
         })
         .catch(error => {
-            setViewMenuResult(error.message);
+            setAddMenuResult(error.message);
         });
     };
     const handleClickRemoveMenuItem = (e) => {
@@ -80,11 +80,11 @@ function ManagerDashboard({ name }) {
             if (data.error) throw new Error(data.error);
             else {
                 // display the menu items
-                setViewMenuResult(`Item ${removeMenuItem} has bee added to ${removeMenuCategory} menu`);
+                setRemoveMenuResult(`Item ${removeMenuItem} has been removed from ${removeMenuCategory} menu`);
             }
         })
         .catch(error => {
-            setViewMenuResult(error.message);
+            setRemoveMenuResult(error.message);
         });
     };
     return (
