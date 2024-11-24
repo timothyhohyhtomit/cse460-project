@@ -41,7 +41,7 @@ function ManagerDashboard({ name }) {
     };
     const handleClickAddMenuItem = (e) => {
         // make a request to the server to add the menu item 
-        fetch(SERVER_URL + `/menu/add/${addMenuCategory}`, {
+        fetch(SERVER_URL + `/menu/add`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -65,7 +65,7 @@ function ManagerDashboard({ name }) {
     };
     const handleClickRemoveMenuItem = (e) => {
         // make a request to the server to remove the menu item
-        fetch(SERVER_URL + `/menu/remove/${removeMenuCategory}`, {
+        fetch(SERVER_URL + `/menu/remove`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
